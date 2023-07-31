@@ -1,0 +1,27 @@
+name = "workers-mail"
+main = "src/index.js"
+compatibility_date = "2023-07-01"
+
+workers_dev = false
+
+[site]
+bucket = "./front/build"
+
+[route]
+pattern = "mail.lain.im" ## Frontend/API domain name
+custom_domain = true
+
+[vars]
+BOUNCE_MAIL = false ## Whether to send bounce emails
+CATCH_ALL_ADDRESS = 'admin@lain.im' ## Catch-all email address
+
+EMAIL_DOMAINS = [ "lain.im" ] ## Your email address domain name
+DISABLE_REGISTRATION = true ## If true, disable new registration
+DISABLE_SENDING = true ## If true, disable send functionality
+SESSION_KV_NAME = "KV_EMAIL"
+SESSION_TTL = 432000 ## Session expiration in seconds (Default: 5 days)
+
+[[ kv_namespaces ]] ## Run 'npm run kv:create'
+binding = "KV_EMAIL"
+id = "3929ab3964944775af9ca655da19e6a2"
+preview_id = "09fd5e3568ca4035985f63121c89e862"

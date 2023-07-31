@@ -1,0 +1,27 @@
+
+<span class="skeleton"><br></span>
+<span class="skeleton">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br></span>
+<span class="skeleton">tempor incididunt ut labore et dolore magna aliqua.<br></span>
+<span class="skeleton"><br></span>
+<span class="skeleton">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br></span>
+<span class="skeleton">consequat.<br></span>
+<span class="skeleton"><br></span>
+<span class="skeleton">Duis aute irure dolor in reprehenderit in voluptate velit esse<br></span>
+<span class="skeleton">cillum dolore eu fugiat nulla pariatur.<br></span>
+<span class="skeleton"><br></span>
+<span class="skeleton">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></span>
+<span class="skeleton"><br></span>
+<span class="skeleton"><br></span>
+<span class="skeleton"><br></span>
+<span class="skeleton">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br></span>
+<span class="skeleton">tempor incididunt ut labore et dolore magna aliqua.<br></span>
+<span class="skeleton"><br></span>
+<span class="skeleton">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br></span>
+<span class="skeleton">consequat.<br></span>
+<span class="skeleton"><br></span>
+<span class="skeleton">Duis aute irure dolor in reprehenderit in voluptate velit esse<br></span>
+<span class="skeleton">cillum dolore eu fugiat nulla pariatur.<br></span>
+<span class="skeleton"><br></span>
+<span class="skeleton">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></span>
+<span class="skeleton"><br></span>
+<span class="skeleton"><br></span>
