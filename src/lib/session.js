@@ -14,8 +14,8 @@ export const sessionManager = () => {
     // renew session and cookie
     await kv.put(`session:${session}`, user, { expirationTtl });
     setCookie(c, 'id', session, {
-      path: '/',
-      domain: new URL(c.url).hostname,
+      // path: '/',
+      domain: new URL(c.req.url).hostname,
       secure: true,
       httpOnly: true,
       maxAge: expirationTtl,
