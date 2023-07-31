@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "postinstall": "cd ./front && npm install",
     "kv:create": "wrangler kv:namespace create KV_EMAIL",
     "kv:init": "wrangler kv:key put --binding=KV_EMAIL --preview=false 'users' '[]'",
     "deploy": "npm run front:build && wrangler deploy",
