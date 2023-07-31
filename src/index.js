@@ -10,6 +10,8 @@ export default {
     const rules = [
       pathname.includes('/api/'),
       pathname.includes('/_app/'),
+      pathname.includes('/robots.txt'),
+      pathname.includes('/favicon.ico'),
     ];
 
     return (rules.includes(true))
