@@ -4,6 +4,12 @@ Workers Mail は、 Cloudflare Workers 上で独自ドメインの電子メー�
 
 メールの送受信には Cloudflare の [Email Routing](https://developers.cloudflare.com/email-routing/email-workers/) 機能を使用します。
 
+## Demo
+
+[Workers Mail(mail.lain.im)](https://mail.lain.im/)
+
+https://github.com/shinosaki/workers-mail/assets/88357168/0644e578-bfaf-4273-9676-a97649463e4f
+
 ## ToDo
 
 - [ ] メール作成
@@ -42,6 +48,12 @@ Workers Mail のセットアップは、以下の手順に従ってください�
 6. Open `https://<Your Frontend Domain>/register` and create a new account
    - If you want to create an account, you will need to set the environment variable `DISABLE_REGISTRATION` to `false` from the Cloudflare Workers dashboard or `wrangler.toml` file.
 7. Start using WORKERS MAIL!!
+
+## Author
+
+[Shinosaki](https://shinosaki.com/)
+
+- [Twitter(@snsk82)](https://twitter.com/snsk82/)
 
 ## License
 
