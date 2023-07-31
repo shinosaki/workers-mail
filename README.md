@@ -39,15 +39,17 @@ Workers Mail のセットアップは、以下の手順に従ってください�
 
 ## Build
 
-1. Login to Cloudflare with `wrangler login`
-2. Edit `wrangler.toml`
+1. Run `git clone https://github.com/shinosaki/workers-mail.git`
+2. Go to project root and Run `npm install`
+3. Login to Cloudflare with `wrangler login`
+4. Edit `wrangler.toml`
    - Destination address for catch-all address require owner verification from the Cloudflare dashboard. https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses
-3. Run `npm run kv:create`. Append `id` to `[[ kv_namespaces ]]` field in `wrangler.toml`
-4. Run `npm run kv:init`
-5. Run `npm run deploy`
-6. Open `https://<Your Frontend Domain>/register` and create a new account
+5. Run `npm run kv:create`. Append `id` to `[[ kv_namespaces ]]` field in `wrangler.toml`
+6. Run `npm run kv:init`
+7. Run `npm run deploy`
+8. Open `https://<Your Frontend Domain>/register` and create a new account
    - If you want to create an account, you will need to set the environment variable `DISABLE_REGISTRATION` to `false` from the Cloudflare Workers dashboard or `wrangler.toml` file.
-7. Start using WORKERS MAIL!!
+9. Start using WORKERS MAIL!!
 
 ## Author
 
