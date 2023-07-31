@@ -57,6 +57,22 @@ Workers Mail のセットアップは、以下の手順に従ってください�
 
 - [Twitter(@snsk82)](https://twitter.com/snsk82/)
 
+## Dependencies
+
+- API
+  - [hono](https://hono.dev/)([Github](https://github.com/honojs/hono))
+  - [bcryptjs](https://www.npmjs.com/package/bcryptjs)([Github](https://github.com/dcodeIO/bcrypt.js))
+- Front
+  - [SvelteKit](https://kit.svelte.dev/)([Github](https://github.com/sveltejs/kit))
+  - [Tailwind CSS](https://tailwindcss.com/)([Github](https://github.com/tailwindlabs/tailwindcss))
+  - [Vite](https://vites.dev)([Github](https://github.com/vitejs/vite))
+  - [Tabler Icons](https://tabler-icons.io/)([Github](https://github.com/tabler/tabler-icons))
+  - [Day.js](https://day.js.org/)([Github](https://github.com/iamkun/dayjs))
+  - [PostalMime](https://www.npmjs.com/package/postal-mime)([Github](https://github.com/postalsys/postal-mime))
+  - Fonts
+    - [Roboto](https://fontsource.org/fonts/roboto)
+    - [Kosugi Maru](https://fontsource.org/fonts/kosugi-maru)
+
 ## License
 
 [MIT](https://raw.githubusercontent.com/shinosaki/workers-mail/main/LICENSE)
