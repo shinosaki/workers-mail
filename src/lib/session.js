@@ -14,12 +14,12 @@ export const sessionManager = () => {
     // renew session and cookie
     await kv.put(`session:${session}`, user, { expirationTtl });
     setCookie(c, 'id', session, {
-      // path: '/',
+      path: '/',
       domain: new URL(c.req.url).hostname,
       secure: true,
       httpOnly: true,
       maxAge: expirationTtl,
-      sameSite: 'Strict',
+      sameSite: 'Strict'
     });
 
     c.session = { id: session, user };
@@ -40,10 +40,11 @@ export const createSession = async ({
 
   setCookie(c, 'id', session, {
     path: '/',
+    domain: new URL(c.req.url).hostname,
     secure: true,
     httpOnly: true,
-    sameSite: 'Strict',
     maxAge: expirationTtl,
+    sameSite: 'Strict'
   });
 
   return true;
@@ -59,6 +60,7 @@ export const deleteSession = async (c) => {
   deleteCookie(c, 'id', {
     path: '/',
     secure: true,
+    domain: new URL(c.req.url).hostname
   })
 
   return true;
