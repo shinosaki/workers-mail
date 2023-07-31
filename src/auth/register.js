@@ -17,7 +17,7 @@ export const register = async (c) => {
 
   // if (!domains.every(v=>EMAIL_DOMAINS.includes(v)))
   //   return c.json({ message: 'Invalid domain' }, 400);
-  else if (await kv.get(`user:${user}`))
+  if (await kv.get(`user:${user}`))
     return c.json({ message: 'User already exists' }, 409);
 
   await kv.put(`user:${user}`, JSON.stringify({
