@@ -6,7 +6,7 @@ import { cors } from 'hono/cors';
 app.use('*', async (c, next) => {
   // https://github.com/honojs/hono/issues/1133#issuecomment-1563573749
   const middleware = cors({
-    origin: () => new URL(c.req.url).hostname.replace(/^api\./, ''),
+    origin: () => new URL(c.req.url).origin.replace(/\/\/api\./, '//'),
     credentials: true,
   });
 
