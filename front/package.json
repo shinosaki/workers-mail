@@ -6,7 +6,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"deploy": "npm run build && wrangler pages deploy ./svelte-kit/cloudflare --project-name=workers-mail-front"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
