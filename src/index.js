@@ -3,20 +3,7 @@ import app from './hono';
 
 export default {
   async fetch(req, env, ctx) {
-    const { origin, pathname } = new URL(req.url);
-
-    const root = new Request(origin, req)
-
-    const rules = [
-      pathname.includes('/api/'),
-      pathname.includes('/_app/'),
-      pathname.includes('/robots.txt'),
-      pathname.includes('/favicon.ico'),
-    ];
-
-    return (rules.includes(true))
-      ? app.fetch(req, env, ctx)
-      : app.fetch(root, env, ctx);
+    return app.fetch(req, env, ctx);
   },
 
   async email(mes, env, ctx) {

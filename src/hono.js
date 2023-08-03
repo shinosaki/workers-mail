@@ -19,8 +19,4 @@ app.route('/api/auth', auth);
 import api from './api';
 app.route('/api/:api_version', api);
 
-import { serveStatic } from 'hono/cloudflare-workers';
-app.get('*', serveStatic({ root: './' }));
-// app.notFound(c=>c.redirect('/', 302))
-
 export default app;
