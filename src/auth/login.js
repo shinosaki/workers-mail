@@ -5,6 +5,7 @@ export const login = async (c) => {
   const { KV_EMAIL: kv,
           SESSION_TTL: expirationTtl } = c.env;
 
+  const redirect = c.req.query('redirect') ?? '';
   const { user, password } = await c.req.parseBody();
   console.log(`Login request (user: ${user})`);
 
@@ -14,7 +15,7 @@ export const login = async (c) => {
 
   // if invalid password redirect to "/login"
   if (!checkHash)
-    return c.redirect(`/login?alert=invalid.username.or.password&type=warn`, 302);
+    return c.redirect(`${redirect}/login?alert=invalid.username.or.password&type=warn`, 302);
 
   await createSession({
     c,
@@ -22,5 +23,5 @@ export const login = async (c) => {
     expirationTtl,
   });
 
-  return c.redirect(`/i/inbox`, 302);
+  return c.redirect(`${redirect}/i/inbox`, 302);
 };
