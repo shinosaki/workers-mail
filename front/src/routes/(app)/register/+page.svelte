@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { page } from '$app/stores';
   import { PUBLIC_API_ENDPOINT as API } from '$env/static/public';
 
   import { t } from '$lib';
@@ -19,7 +20,7 @@
              w-full h-screen">
   <h1 class="text-5xl font-bold">{t('registration', $language)}</h1>
 
-  <form method="POST" action={`${API}/auth/register`} class="grid gap-20 w-80">
+  <form method="POST" action={`${API}/auth/register?redirect=${$page.url.origin}`} class="grid gap-20 w-80">
     <!-- <input id="domains" type="hidden" value={PUBLIC_DOMAINS}> -->
 
     <div class="grid gap-10">

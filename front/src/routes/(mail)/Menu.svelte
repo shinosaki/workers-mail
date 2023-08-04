@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { page } from '$app/stores';
   import { PUBLIC_APP_NAME as APP_NAME,
            PUBLIC_API_ENDPOINT as API } from '$env/static/public';
 
@@ -55,7 +56,7 @@
       title: t('logout', $language),
       icon: IconLogout2,
       method: 'post',
-      link: `${API}/auth/logout`,
+      link: `${API}/auth/logout?redirect=${$page.url.origin}`,
       color: 'indigo'
     }
   ];
