@@ -14,7 +14,7 @@
     "dev:front": "cd ./front && npm run dev",
     "dev:init": "wrangler dev ./dev/index.js",
     "dev:init:req": "curl -s localhost:8787",
-    "preview:init": "node ./dev/testdata.js | wrangler kv:bulk put --binding=KV_EMAIL --preview=true /dev/stdin",
+    "preview:init": "node ./dev/testdata.js | wrangler kv:bulk put --binding=KV_EMAIL --preview=true /dev/stdin"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
