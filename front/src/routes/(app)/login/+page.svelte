@@ -1,4 +1,5 @@
 <script>
+  import { page } from '$app/stores';
   import { PUBLIC_API_ENDPOINT as API } from '$env/static/public';
 
   import { t } from '$lib';
@@ -11,7 +12,7 @@
              w-full h-screen">
   <h1 class="text-5xl font-bold">{t('login', $language)}</h1>
 
-  <form method="POST" action={`${API}/auth/login`}
+  <form method="POST" action={`${API}/auth/login?redirect=${$page.url.origin}`}
         class="grid gap-20 w-80">
     <div class="grid gap-10">
       <Input id="user"

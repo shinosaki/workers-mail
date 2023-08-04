@@ -21,7 +21,7 @@
       account = { domains: [] };
 
   onMount(async () => {
-    account = await fetch(`${API}/v1/account`)
+    account = await fetch(`${API}/v1/account`, { credentials: 'include' })
       .then(r=>r.json())
       .then(j=>j.account);
   });

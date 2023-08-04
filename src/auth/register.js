@@ -8,6 +8,7 @@ export const register = async (c) => {
   if (DISABLE_REGISTRATION === true)
     return c.json({ message: 'Registration temporarily unavailable' }, 503);
 
+  const redirect = c.req.query('redirect') ?? '';
   const { user,
           password,
           display } = await c.req.parseBody();
@@ -34,5 +35,5 @@ export const register = async (c) => {
   const users = await kv.get('users', { type: 'json' })
   await kv.put('users', JSON.stringify([ ...users, user ]));
 
-  return c.redirect(`/login?alert=successful.registration`, 302)
+  return c.redirect(`${redirect}/login?alert=successful.registration`, 302)
 };

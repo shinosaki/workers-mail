@@ -1,6 +1,6 @@
 <script>
-  import { PUBLIC_APP_NAME as APP_NAME } from '$env/static/public';
   import { page } from '$app/stores';
+  import { PUBLIC_APP_NAME as APP_NAME } from '$env/static/public';
 </script>
 
 <svelte:head>

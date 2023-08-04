@@ -15,7 +15,7 @@
   import 'dayjs/locale/en';
   import 'dayjs/locale/ja';
 
-  const getMessage = async () => await fetch(`${API}/v1/message/${$page.params.id}`).then(r=>r.json());
+  const getMessage = async () => await fetch(`${API}/v1/message/${$page.params.id}`,  { credentials: 'include' }).then(r=>r.json());
 
   const parseEmail = async eml => await parser.parse(eml);
 </script>

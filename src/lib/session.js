@@ -15,7 +15,7 @@ export const sessionManager = () => {
     await kv.put(`session:${session}`, user, { expirationTtl });
     setCookie(c, 'id', session, {
       path: '/',
-      domain: new URL(c.req.url).hostname,
+      domain: new URL(c.req.url).hostname.replace(/^api\./, ''),
       secure: true,
       httpOnly: true,
       maxAge: expirationTtl,
@@ -40,7 +40,7 @@ export const createSession = async ({
 
   setCookie(c, 'id', session, {
     path: '/',
-    domain: new URL(c.req.url).hostname,
+    domain: new URL(c.req.url).hostname.replace(/^api\./, ''),
     secure: true,
     httpOnly: true,
     maxAge: expirationTtl,
@@ -60,7 +60,7 @@ export const deleteSession = async (c) => {
   deleteCookie(c, 'id', {
     path: '/',
     secure: true,
-    domain: new URL(c.req.url).hostname
+    domain: new URL(c.req.url).hostname.replace(/^api\./, '')
   })
 
   return true;

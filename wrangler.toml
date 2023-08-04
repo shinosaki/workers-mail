@@ -4,11 +4,14 @@ compatibility_date = "2023-07-01"
 
 workers_dev = false
 
-[site]
-bucket = "./front/build"
+[dev]
+ip = "localhost"
+port = 8787
+local_protocol = "http"
+host = "localhost:8787"
 
 [route]
-pattern = "mail.lain.im" ## Frontend/API domain name
+pattern = "api.mail.lain.im" ## API domain name
 custom_domain = true
 
 [vars]
@@ -23,5 +26,5 @@ SESSION_TTL = 432000 ## Session expiration in seconds (Default: 5 days)
 
 [[ kv_namespaces ]] ## Run 'npm run kv:create'
 binding = "KV_EMAIL"
-id = "3929ab3964944775af9ca655da19e6a2"
-preview_id = "09fd5e3568ca4035985f63121c89e862"
+id = "81877342b3a14c23bf79368417d9cbbb"
+preview_id = "36c28e6d36584ed89d8919a269828bcd"

@@ -19,7 +19,7 @@
   let data = [];
 
   const fetchMessages = async () => {
-    return await fetch(`${API}/v1/messages`).then(r=>r.json());
+    return await fetch(`${API}/v1/messages`, { credentials: 'include' }).then(r=>r.json());
   };
 </script>
 

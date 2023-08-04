@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { page } from '$app/stores';
   import { PUBLIC_APP_NAME as APP_NAME,
            PUBLIC_API_ENDPOINT as API } from '$env/static/public';
 
@@ -71,14 +72,15 @@
         title: t('logout', $language),
         icon: IconLogout2,
         method: 'post',
-        link: `${API}/auth/logout`,
+        keepMenu: true,
+        link: `${API}/auth/logout?redirect=${$page.url.origin}`,
         color: 'indigo'
       }
     ] : []
   ];
 
   onMount(async () => {
-    isLogin = await fetch('/api/v1/ping')
+    isLogin = await fetch(`${API}/v1/ping`, { credentials: 'include' })
       .then(r=>r.json())
       .then(j=>j.status);
   });
