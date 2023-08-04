@@ -1,5 +1,7 @@
 <script>
-  //import { IconInfoCircle } from '@tabler/icons-svelte';
+  // import { IconInfoCircle,
+  //          IconAlertTriangle,
+  //          IconX } from '@tabler/icons-svelte';
   import IconInfoCircle from '@tabler/icons-svelte/dist/svelte/icons/IconInfoCircle.svelte';
   import IconAlertTriangle from '@tabler/icons-svelte/dist/svelte/icons/IconAlertTriangle.svelte';
   import IconX from '@tabler/icons-svelte/dist/svelte/icons/IconX.svelte';
