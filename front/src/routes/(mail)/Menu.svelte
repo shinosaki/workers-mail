@@ -56,6 +56,7 @@
       title: t('logout', $language),
       icon: IconLogout2,
       method: 'post',
+      keepMenu: true,
       link: `${API}/auth/logout?redirect=${$page.url.origin}`,
       color: 'indigo'
     }
