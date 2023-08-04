@@ -4,6 +4,12 @@ compatibility_date = "2023-07-01"
 
 workers_dev = false
 
+[dev]
+ip = "localhost"
+port = 8787
+local_protocol = "http"
+host = "localhost:8787"
+
 [route]
 pattern = "api.mail.lain.im" ## API domain name
 custom_domain = true
