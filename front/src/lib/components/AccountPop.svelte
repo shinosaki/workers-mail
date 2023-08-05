@@ -16,9 +16,7 @@
     navigator.clipboard.writeText(textContent);
   };
 
-  let toggleMenu,
-      visible,
-      account = { domains: [] };
+  let account = { domains: [] };
 
   onMount(async () => {
     account = await fetch(`${API}/v1/account`, { credentials: 'include' })
@@ -26,19 +24,18 @@
       .then(j=>j.account);
   });
 
-  $: ({ user, domains, display } = account);
-  $: visible = (toggleMenu) ? 'visible opacity-100' : 'invisible opacity-0';
+  $: ({ user = '', display = '', domains } = account);
 </script>
 
 <div class="flex relative">
-  <input type="checkbox" id="account-menu" class="absolute opacity-0 h-full w-full" bind:checked={toggleMenu}>
+  <input type="checkbox" id="account-menu" class="absolute opacity-0 h-full w-full">
 
   <div class="flex items-center gap-3">
     <IconUserCircle stroke="1.5" class="w-8 h-8 flex-shrink-0 text-slate-400" />
     <!-- <span class="font-bold text-slate-400">{display}</span> -->
   </div>
 
-  <div id="account-pop" class="{visible} transition-opacity duration-300
+  <div id="account-pop" class="transition-opacity duration-300
     inline-block w-64
     absolute right-0 top-14 z-10
     text-sm text-gray-500 dark:text-gray-400
@@ -71,3 +68,13 @@
     </div>
   </div>
 </div>
+
+<style>
+  #account-pop {
+    @apply invisible opacity-0;
+  }
+
+  #account-menu:checked ~ #account-pop {
+    @apply visible opacity-100;
+  }
+</style>

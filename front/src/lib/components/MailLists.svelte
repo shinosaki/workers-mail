@@ -1,6 +1,4 @@
 <script>
-  import { PUBLIC_API_ENDPOINT as API } from '$env/static/public';
-
   import { CheckBox, IconFolderShare, MailItem, Skeleton } from '$lib/components';
 
   // import { IconArchive,
@@ -16,11 +14,7 @@
   import IconTag from '@tabler/icons-svelte/dist/svelte/icons/IconTag.svelte';
   import IconTrash from '@tabler/icons-svelte/dist/svelte/icons/IconTrash.svelte';
 
-  let data = [];
-
-  const fetchMessages = async () => {
-    return await fetch(`${API}/v1/messages`, { credentials: 'include' }).then(r=>r.json());
-  };
+  export let messages = [];
 </script>
 
 
@@ -45,22 +39,7 @@
     <button><IconFolderShare /></button>
   </nav>
 
-  {#await fetchMessages()}
-    {#each Array(15) as a}
-      <li class="flex flex-nowrap items-center
-                 gap-5 lg:gap-10 py-2 px-3
-                 border-b border-slate-500 last:border-0">
-        <Skeleton width="10" height="10" noShrink />
-
-        <div class="flex flex-col md:flex-row flex-nowrap gap-3 w-full whitespace-nowrap items-start md:items-center">
-          <Skeleton width="80" classes="w-40" />
-          <Skeleton width="full" />
-        </div>
-      </li>
-    {/each}
-  {:then data}
-    {#each data as item (item)}
-      <MailItem data={item} />
-    {/each}
-  {/await}
+  {#each messages as item (item)}
+    <MailItem data={item} />
+  {/each}
 </ul>
