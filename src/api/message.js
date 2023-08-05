@@ -1,9 +1,14 @@
+import { postalMime } from 'postal-mime/dist/node';
+
 export const message = async (c) => {
   const { KV_EMAIL: kv } = c.env;
   const { id } = c.req.param();
   const { user } = c.session;
 
   const data = await kv.get(`message:${user}:${id}`, { type: 'json' });
+  
+  const PostalMime = postalMime.default;
+  data.email = await new PostalMime().parse(data.eml);
 
   return (data) ? c.json(data)
                 : c.json({ status: false }, 404);
