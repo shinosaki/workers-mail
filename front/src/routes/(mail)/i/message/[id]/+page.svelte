@@ -16,8 +16,6 @@
   import 'dayjs/locale/ja';
 
   const getMessage = async () => await fetch(`${API}/v1/message/${$page.params.id}`,  { credentials: 'include' }).then(r=>r.json());
-
-  const parseEmail = async eml => await parser.parse(eml);
 </script>
 
 
@@ -47,7 +45,7 @@
       <main class="p-4 bg-slate-100 dark:bg-slate-800 whitespace-pre-wrap break-words overflow-y-scroll w-full h-full">
         <DummyMessage />
       </main>
-    {:then { id, to, from, date, subject, headers, eml }}
+    {:then { id, to, from, date, subject, headers, email }}
       <header class="flex flex-col gap-5">
         <div class="flex gap-5 flex-col md:flex-row justify-between md:items-end">
           <span class="text-3xl">{subject}</span>
@@ -63,17 +61,11 @@
         </div>
       </header>
 
-      {#await parseEmail(eml)}
-        <main class="p-4 bg-slate-100 dark:bg-slate-800 whitespace-pre-wrap break-words overflow-y-scroll w-full h-full">
-          <DummyMessage />
-        </main>
-      {:then email}
-        {#if email.html}
-          <iframe srcdoc={email.html} class="overflow-y-scroll w-full h-full" />
-        {:else if email.text}
-          <main class="p-4 bg-slate-100 dark:bg-slate-800 whitespace-pre-wrap break-words overflow-y-scroll w-full h-full">{email.text}</main>
-        {/if}
-      {/await}
+      {#if email.html}
+        <iframe srcdoc={email.html} class="overflow-y-scroll w-full h-full" />
+      {:else if email.text}
+        <main class="p-4 bg-slate-100 dark:bg-slate-800 whitespace-pre-wrap break-words overflow-y-scroll w-full h-full">{email.text}</main>
+      {/if}
     {/await}
   </article>
 </div>

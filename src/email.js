@@ -5,6 +5,8 @@
 // import { ulid } from 'ulid';
 // import { ulidFactory } from "ulid-workers";
 
+import { postalMime } from 'postal-mime/dist/node';
+
 export const Email = async (message, env, ctx) => {
   const kv = env.KV_EMAIL;
   const id = crypto.randomUUID();
@@ -42,6 +44,9 @@ export const Email = async (message, env, ctx) => {
     }],
     eml: await readEmailBody(message.raw)
   };
+
+  const PostalMime = postalMime.default;
+  data.email = await new PostalMime().parse(data.eml);
 
   const USERS = await kv.get('users', { type: 'json' });
 

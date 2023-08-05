@@ -59,7 +59,7 @@
       </li>
     {/each}
   {:then data}
-    {#each data as item, index (item)}
+    {#each data as item (item)}
       <MailItem data={item} />
     {/each}
   {/await}
