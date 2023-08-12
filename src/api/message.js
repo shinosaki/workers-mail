@@ -18,9 +18,9 @@ export const messageList = async (c) => {
   const fetchAllMessages = async messages => {
     const data =  await Promise.all(messages.map(id => 
       kv.get(`message:${user}:${id}`, { type: 'json' })));
-    return data.map(({ id, date, subject, from }) => 
-      Object({ id, date, subject, from })).reverse();
-  }
+    return data.map(({ id, email: { date, from, subject } }) => 
+      Object({ id, date, from, subject })).reverse();
+  };
 
   return (data) ? c.json(await fetchAllMessages(data.messages))
                 : c.json({ status: false }, 404);
