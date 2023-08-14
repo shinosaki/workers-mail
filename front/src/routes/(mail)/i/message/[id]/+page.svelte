@@ -69,7 +69,7 @@
     </header>
 
     {#if html}
-      <iframe srcdoc={html} />
+      <iframe srcdoc={html} class="h-full" />
     {:else if text}
       <main class="h-full p-6 overflow-y-auto whitespace-pre-wrap break-words bg-slate-200 dark:bg-slate-700">{text}</main>
     {/if}
