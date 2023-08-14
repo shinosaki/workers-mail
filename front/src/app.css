@@ -1,0 +1,38 @@
+/* Fonts */
+@import '@fontsource/roboto';
+@import '@fontsource/kosugi-maru';
+:root {
+  font-family: 'Roboto', 'Kosugi Maru';
+}
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Default color */
+  :root { @apply bg-slate-300 text-slate-800 }
+  :root.dark { @apply bg-slate-700 text-slate-300 }
+
+  /* <a> Link */
+  a.link { @apply text-blue-500 underline underline-offset-4 }
+  a.link:hover { @apply text-blue-400 }
+  :root.dark a.link { @apply text-blue-400 }
+  :root.dark a.link:hover { @apply text-blue-300 }
+
+  /* Skeleton */
+  .skeleton { @apply bg-slate-300 rounded-lg animate-pulse text-transparent select-none }
+  :root.dark .skeleton { @apply bg-slate-700 }
+
+  /* Button */
+  .button { @apply p-2.5 border rounded-lg w-full text-center text-slate-200 bg-indigo-600 border-indigo-400 hover:text-slate-200 hover:bg-indigo-500 hover:border-indigo-400 active:opacity-70 dark:bg-indigo-600 dark:border-indigo-700 dark:hover:bg-indigo-500 dark:hover:border-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:border-gray-400 dark:disabled:bg-gray-500 dark:disabled:border-gray-600 }
+  .button-menu { @apply rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 active:bg-slate-400/70 dark:active:bg-slate-600/70 }
+
+  /* Input */
+  .input { @apply py-3.5 px-5 rounded-xl border border-slate-400 dark:border-slate-500 bg-slate-100 dark:bg-slate-800 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:border-gray-600 dark:disabled:bg-gray-600 dark:disabled:border-gray-500 }
+
+  /* Alert */
+  .alert[open] { @apply flex }
+  .alert { @apply gap-5 items-center justify-between h-fit p-4 border-4 rounded-xl text-inherit bg-slate-200 border-slate-400 dark:bg-slate-800 dark:border-slate-500 }
+}
