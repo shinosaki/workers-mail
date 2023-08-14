@@ -1,66 +1,71 @@
 <script>
-  import { onMount } from 'svelte';
   import { page } from '$app/stores';
-  import { PUBLIC_APP_NAME as APP_NAME,
-           PUBLIC_API_ENDPOINT as API } from '$env/static/public';
+  import { PUBLIC_API_ENDPOINT } from '$env/static/public';
+  import { t } from '$lib/i18n';
+  import { dark, lang } from '$lib/stores';
+  import { MenuItem } from '$lib/components';
 
-  import { t, langSelector } from '$lib';
-  import { dark, language, langMenu } from '$lib/stores';
-  import { Menu } from '$lib/components';
-
-  // import { IconInbox,
-  //          IconLogout2,
-  //          IconSettings,
-  //          IconBrightnessHalf,
-  //          IconLanguageHiragana } from '@tabler/icons-svelte';
   import IconInbox from '@tabler/icons-svelte/dist/svelte/icons/IconInbox.svelte';
   import IconLogout2 from '@tabler/icons-svelte/dist/svelte/icons/IconLogout2.svelte';
   import IconSettings from '@tabler/icons-svelte/dist/svelte/icons/IconSettings.svelte';
   import IconBrightnessHalf from '@tabler/icons-svelte/dist/svelte/icons/IconBrightnessHalf.svelte';
   import IconLanguageHiragana from '@tabler/icons-svelte/dist/svelte/icons/IconLanguageHiragana.svelte';
 
-  $: button = { value: t('compose', $language), type: 'indigo' };
+  const themeHandler = () => {
+    return (e) => {
+      e.preventDefault();
+      $dark = !$dark;
+    };
+  };
 
-  $: top = [
-    {
-      title: t('inbox', $language),
-      link: `/i/inbox`,
-      icon: IconInbox
-    }
-  ];
-
-  $: bottom = [
-    {
-      title: t('theme.switch', $language),
-      icon: IconBrightnessHalf,
-      onClick: () => $dark = !$dark
-    },
-    {
-      title: t('language', $language),
-      icon: IconLanguageHiragana,
-      keepMenu: true,
-      onClick: () => $langMenu = !$langMenu,
-      toggleChildren: $langMenu,
-      children: [
-        { title: 'English', onClick: langSelector('en') },
-        { title: 'Japanese - 日本語', onClick: langSelector('ja') },
-      ]
-    },
-    { hr: true },
-    {
-      title: t('settings', $language),
-      icon: IconSettings,
-      link: '/account/settings'
-    },
-    {
-      title: t('logout', $language),
-      icon: IconLogout2,
-      method: 'post',
-      keepMenu: true,
-      link: `${API}/auth/logout?redirect=${$page.url.origin}`,
-      color: 'indigo'
-    }
-  ];
+  const langHandler = (language) => {
+    return (e) => {
+    console.log('handle')
+      e.preventDefault();
+      $lang = language;
+    };
+  };
 </script>
 
-<Menu header={{ title: APP_NAME, link: '/i/inbox' }} {button} {top} {bottom} />
+<ul class="flex flex-col gap-1">
+  <MenuItem icon={IconInbox}
+            value={$t('inbox')}
+            link="/i/inbox" />
+</ul>
+
+<div class="flex flex-col gap-1">
+  <ul class="hidden md:flex flex-col gap-1">
+    <MenuItem icon={IconBrightnessHalf}
+              value={$t('switch.theme')}
+              link="?theme={($dark) ? 'light' : 'dark'}"
+              onclick={themeHandler()} />
+
+    <MenuItem icon={IconLanguageHiragana}
+              value={$t('language')}
+              method="children">
+
+      <MenuItem value="English"
+                link="?lang=en"
+                onclick={langHandler('en')} />
+
+      <MenuItem value="Japanese - 日本語"
+                link="?lang=ja"
+                onclick={langHandler('ja')} />
+
+    </MenuItem>
+  </ul>
+
+  <hr class="border-slate-300 dark:border-slate-600">
+
+  <ul class="flex flex-col gap-1">
+    <MenuItem icon={IconSettings}
+              value={$t('settings')}
+              link="/account/settings" />
+
+    <MenuItem icon={IconLogout2}
+              value={$t('logout')}
+              method="post"
+              color="indigo"
+              link={`${PUBLIC_API_ENDPOINT}/auth/logout?redirect=${$page.url.origin}`} />
+  </ul>
+</div>

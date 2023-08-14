@@ -1,10 +1,12 @@
 <script>
-  import { page } from '$app/stores';
-  import { PUBLIC_APP_NAME as APP_NAME } from '$env/static/public';
-</script>
+  import '../app.css';
+  import { loadTheme } from '$lib/theme';
+  import { loadLang } from '$lib/i18n';
 
-<svelte:head>
-  <title>{APP_NAME} - {$page.url.hostname}</title>
-</svelte:head>
+  export let data;
+
+  loadTheme(data.theme);
+  loadLang(data.lang);
+</script>
 
 <slot />

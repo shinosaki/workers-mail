@@ -1,42 +1,19 @@
 <script>
-  import '../app.css';
-
-  import { onMount } from 'svelte';
   import { page } from '$app/stores';
-  import { PUBLIC_APP_NAME as APP_NAME } from '$env/static/public';
+  import { PUBLIC_APP_NAME } from '$env/static/public';
 
-  import { loadLanguage, loadTheme, t } from '$lib';
-  import { menu, language } from '$lib/stores';
-  import { Drawer, Navbar, SideMenu } from '$lib/components';
-  import Menu from './(app)/Menu.svelte';
-
-  onMount(() => {
-    loadLanguage();
-    loadTheme();
-  });
+  $: ({ status, error } = $page);
 </script>
 
-<div class="flex flex-col lg:flex-row
-            dark:bg-slate-900
-            text-slate-700 dark:text-slate-300">
+<svelte:head>
+  <title>{$page.status} | {PUBLIC_APP_NAME} - {$page.url.hostname}</title>
+</svelte:head>
 
-  <Navbar title={APP_NAME} link="/" />
-
-  {#if $menu}
-    <Drawer>
-      <Menu />
-    </Drawer>
-  {/if}
-
-  <SideMenu>
-    <Menu />
-  </SideMenu>
-
-  <main class="flex flex-col gap-16 items-center justify-center w-full h-screen">
-    <div class="grid gap-10 w-80 text-center">
-      <h1 class="text-9xl">{$page.status}</h1>
-      <h3 class="text-2xl">{$page.error.message}</h3>
-    </div>
+<article class="w-screen h-screen">
+  <main class="absolute inset-0 m-auto w-fit h-fit flex flex-col items-center gap-5">
+    <h1 class="text-9xl">{status}</h1>
+    <h3 class="text-2xl">{error.message}</h3>
+    <a href="/" class="link absolute -bottom-1/2 whitespace-nowrap text-xl 
+    dark:text-slate-400">Top Page</a>
   </main>
-
-</div>
+</article>

@@ -6,14 +6,13 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"build:dev": "vite build --mode development",
 		"preview": "vite preview",
-		"pages": "vite build --mode development && wrangler pages dev ./.svelte-kit/cloudflare",
-		"deploy": "npm run build && wrangler pages deploy .svelte-kit/cloudflare --project-name=workers-mail-front"
+		"pages": "wrangler pages dev .svelte-kit/cloudflare",
+		"deploy": "npm run build && wrangler pages deploy .svelte-kit/cloudflare"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-cloudflare": "^2.3.2",
-		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.20.4",
 		"autoprefixer": "^10.4.14",
 		"postcss": "^8.4.27",
@@ -22,10 +21,9 @@
 		"vite": "^4.4.2"
 	},
 	"dependencies": {
-		"@fontsource/kosugi-maru": "^5.0.5",
-		"@fontsource/roboto": "^5.0.5",
+		"@fontsource/kosugi-maru": "^5.0.7",
+		"@fontsource/roboto": "^5.0.8",
 		"@tabler/icons-svelte": "^2.30.0",
-		"dayjs": "^1.11.9",
-		"postal-mime": "^1.0.16"
+		"dayjs": "^1.11.9"
 	}
 }

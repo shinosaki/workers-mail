@@ -3,4 +3,3 @@ User-agent: *
 Allow: /
 
 Disallow: /i/*
-Disallow: /api/*

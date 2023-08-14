@@ -1,17 +1,12 @@
-<script>
-  export let id,
-             type,
-             label,
-             placeholder,
-             disabled;
+<script>  
+  export let id = 'id',
+             type = 'text',
+             label = 'Label',
+             disabled = false,
+             placeholder = 'Placeholder...';
 </script>
 
-<label class="grid gap-2" for={id}>
-  {label}
-  <input {id} name={id} {type} {placeholder} {disabled}
-         class="p-2.5 bg-slate-100 dark:bg-slate-700
-                rounded-lg border border-slate-500
-                disabled:bg-slate-300 dark:disabled:bg-slate-500
-                disabled:cursor-not-allowed">
-  <slot />
+<label class="flex flex-col w-full" for={id}>
+  <span class="p-1">{label}</span>
+  <input {id} name={id} {type} {placeholder} class="input w-full" {disabled}>
 </label>

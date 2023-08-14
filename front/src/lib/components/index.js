@@ -1,17 +1,9 @@
-export { default as AccountPop } from './AccountPop.svelte';
 export { default as Alert } from './Alert.svelte';
-export { default as Button } from './Button.svelte';
-export { default as CheckBox } from './CheckBox.svelte';
-export { default as Drawer } from './Drawer.svelte';
-export { default as IconFolderShare } from './IconFolderShare.svelte';
 export { default as Input } from './Input.svelte';
-export { default as MailItem } from './MailItem.svelte';
-export { default as MailLists } from './MailLists.svelte';
-export { default as MailNavbar } from './MailNavbar.svelte';
-export { default as Menu } from './Menu.svelte';
 export { default as MenuItem } from './MenuItem.svelte';
 export { default as Navbar } from './Navbar.svelte';
-export { default as SearchBox } from './SearchBox.svelte';
 export { default as SideMenu } from './SideMenu.svelte';
-export { default as Skeleton } from './Skeleton.svelte';
-export { default as Tooltip } from './Tooltip.svelte';
+
+export { default as MailItem } from './mail/Item.svelte';
+export { default as MailLists } from './mail/Lists.svelte';
+export { default as MailNavbar } from './mail/Navbar.svelte';

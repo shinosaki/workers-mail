@@ -1,37 +1,35 @@
 <script>
+  import { PUBLIC_APP_NAME, PUBLIC_API_ENDPOINT } from '$env/static/public';
   import { page } from '$app/stores';
-  import { PUBLIC_API_ENDPOINT as API } from '$env/static/public';
-
-  import { t } from '$lib';
-  import { language } from '$lib/stores';
-  import { Button, Alert, Input } from '$lib/components';
+  import { t } from '$lib/i18n';
+  import { Input } from '$lib/components';
 </script>
 
-<main class="flex flex-col gap-16
-             items-center justify-center
-             w-full h-screen">
-  <h1 class="text-5xl font-bold">{t('login', $language)}</h1>
+<svelte:head>
+  <title>{$t('login')} | {PUBLIC_APP_NAME} - {$page.url.hostname}</title>
+</svelte:head>
 
-  <form method="POST" action={`${API}/auth/login?redirect=${$page.url.origin}`}
-        class="grid gap-20 w-80">
-    <div class="grid gap-10">
+<article class="flex flex-col gap-20 items-center w-full my-auto p-10">
+  <h1 class="text-5xl font-bold text-center">
+    {$t('login')}
+  </h1>
+
+  <main class="flex flex-col gap-10 w-96 max-w-[90vw]">
+    <form class="contents"
+          method="post"
+          action={`${PUBLIC_API_ENDPOINT}/auth/login?redirect=${$page.url.origin}`}>
       <Input id="user"
-             type="text"
-             label={t('user.id', $language)}
-             placeholder="lain" />
+             placeholder="lain"
+             label={$t('user.id')} />
 
       <Input id="password"
              type="password"
-             label={t('password', $language)}
-             placeholder="Password">
-        <a href="/reset"
-           class="text-right text-indigo-500 dark:text-indigo-300
-                  underline underline-offset-4">
-          <i class="text-xs">{t('password.reset', $language)}</i>
-        </a>
-      </Input>
-    </div>
+             placeholder="Password"
+             label={$t('password')} />
 
-    <Button value={t('login', $language)} />
-  </form>
-</main>
+      <button class="button mt-10">
+        {$t('login')}
+      </button>
+    </form>
+  </main>
+</article>
