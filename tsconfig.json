@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "lib": [
+      "esnext"
+    ],
+    "types": [
+      "@cloudflare/workers-types"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+    "baseUrl": "./src",
+    "paths": {
+      "$app": ["."],
+      "$app/*": ["./*"],
+      "$lib": ["lib"],
+      "$lib/*": ["lib/*"],
+      "$routes": ["routes"],
+      "$routes/*": ["routes/*"],
+      "$db": ["../db"],
+      "$db/*": ["../db/*"],
+    }
+  },
+  "include": []
+}

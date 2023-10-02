@@ -1,0 +1,39 @@
+name = "workers-mail"
+main = "src/index.js"
+node_compat = true
+compatibility_date = "2023-09-01"
+
+workers_dev = false
+
+[route]
+pattern = "mail.lain.im"
+custom_domain = true
+
+[vars]
+CATCH_ALL_ADDRESS = "admin@lain.im"
+EMAIL_DOMAINS = [ "lain.im" ]
+REGISTRATION = false
+SENDING = true
+DKIM_SELECTOR = "1185"
+# DKIM_PRIV_B64 = "" ## Run "npm run dkim" and "npm run secret:dkim"
+
+[[ kv_namespaces ]]
+binding = "SESSION"
+id = "_"
+preview_id = "local"
+
+[[ d1_databases ]]
+binding = "DB"
+database_name = "workers-mail-db"
+database_id = "_"
+preview_database_id = "local"
+migrations_dir = "./drizzle"
+
+[site]
+bucket = "./assets"
+
+[dev]
+ip = "localhost"
+port = 8787
+local_protocol = "http"
+host = "localhost:8787"

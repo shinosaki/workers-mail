@@ -1,0 +1,37 @@
+{
+  "name": "workers-mail",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --minify=false --no-bundle=true --live-reload src/index.js",
+    "deploy": "npm run css:build && wrangler deploy --minify src/index.js",
+    "deploy:migration": "wrangler d1 migrations apply workers-mail-db",
+    "dkim": "node dkim.js | tee dkim.json && chmod 400 dkim.json",
+    "secret:dkim": "grep -oP '(?<=\"privateKey\": \")[^\"]*' dkim.json | tr -d '\n' | wrangler secret put DKIM_PRIV_B64",
+    "kv:init": "wrangler kv:namespace create SESSION",
+    "db:init": "wrangler d1 create workers-mail-db",
+    "db:generate": "drizzle-kit generate:sqlite --schema=db/schema.js",
+    "db:migration": "wrangler d1 migrations apply --local workers-mail-db",
+    "db:sample": "wrangler dev sample/index.js",
+    "css": "tailwindcss -i src/style.css -o assets/style.css --watch",
+    "css:build": "tailwindcss -i src/style.css -o assets/style.css --minify"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.1.8",
+    "bcryptjs": "^2.4.3",
+    "dayjs": "^1.11.10",
+    "drizzle-orm": "^0.28.6",
+    "hono": "^3.6.0",
+    "hono-kv-session": "^0.2.0",
+    "mimetext": "^3.0.16",
+    "postal-mime": "^1.0.16",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230821.0",
+    "drizzle-kit": "^0.19.13",
+    "tailwindcss": "^3.3.3",
+    "wrangler": "^3.10.1"
+  }
+}
