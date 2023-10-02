@@ -5,7 +5,9 @@ Workers Mail は、 Cloudflare Workers 上で独自ドメインの電子メー�
 メールの送受信には Cloudflare の [Email Routing](https://developers.cloudflare.com/email-routing/email-workers/) 機能を使用します。
 
 ## Demo
-[Workers Mail(mail.lain.im)](https://mail.lain.im/)
+[Workers Mail(mail.lain.im)](https://mail.lain.im/)  
+
+https://github.com/shinosaki/workers-mail/assets/88357168/59d76515-708c-41e5-850d-5bffee8a5f7b
 
 ## ToDo
 - [x] メール作成
