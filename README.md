@@ -153,6 +153,14 @@ DKIMセレクタ名は`wrangler.toml`内の`DKIM_SELECTOR`の値を設定しま�
 | --- | --- | --- |
 | TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:<DMARCレポートを受け取るアドレス>` |
 
+## Email Routingの設定
+Cloudflareの[公式ドキュメント](https://developers.cloudflare.com/email-routing/email-workers/enable-email-workers/)に従ってEmail Routingを有効化し、Catch-all addressのActionを`Send to a Worker`に、Worker名に`workers-mail`を設定します。  
+
+![Cloudflare Email Routingの設定画面](./docs/email-routing-dashboard.png)
+
+また、Destination addressesに`CATCH_ALL_ADDRESS`で設定したメールアドレスを設定し、認証してください。  
+**認証メールを受信するには、先ほどデプロイしたWorker Mailに当該ユーザのアカウントを作成しておく必要があります**（例えば、`CATCH_ALL_ADDRESS`が`admin@example.com`なら、`admin`というユーザを事前に作成しておいてください）。
+
 ## Author
 
 [Shinosaki](https://shinosaki.com/)
