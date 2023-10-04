@@ -11,14 +11,7 @@ const app = new Hono();
 // Middlewares
 app.use('*', drizzleD1());
 app.use('*', kvClient());
-app.use('*', SessionManager());
-// Renew Session
-app.use('*', async (c, next) => {
-  if (c.session.status) {
-    await createSession(c, c.session.value);
-  };
-  await next();
-});
+app.use('*', SessionManager({ regenerate: true }));
 
 // API
 app.route('/api/auth', auth);
