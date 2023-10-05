@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { validation } from '$lib/validations';
-import { getEmail } from '$db';
+import { getEmail, getUserEmails } from '$db';
 
 export const message = {
   validator: validation(z.object({
