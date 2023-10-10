@@ -135,7 +135,7 @@ KVはセッション管理に、D1はユーザデータとメールデータの�
 ### 5. デプロイ
 - `npm run deploy`
 
-## DNSレコードの設定 (SPF/DKIM/DMARC)
+## DNSレコードの設定 (SPF, DKIM, DMARC etc.)
 ### DKIM
 DKIMセレクタ名は`wrangler.toml`内の`DKIM_SELECTOR`の値を設定します。  
 
@@ -156,6 +156,17 @@ DKIMセレクタ名は`wrangler.toml`内の`DKIM_SELECTOR`の値を設定しま�
 | タイプ | レコード名 | 内容 |
 | --- | --- | --- |
 | TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:<DMARCレポートを受け取るアドレス>` |
+
+### MailChannels
+通常はCloudflareに登録したドメイン名を`cfid`に指定してください。
+
+| タイプ | レコード名 | 内容 |
+| --- | --- | --- |
+| TXT | `_mailchannels` | `v=mc1 cfid=<ドメイン名>` |
+
+このレコードを追加しないと、MailChannelsは「Failed to send email: 550 5.7.1 This sender is not authorized to send from example.com. See https://bit.ly/domain-lockdown. cfid=example.com」というエラーを返します。  
+レコードを設定したのにこのエラーが表示される場合、エラーメッセージ末尾の`cfid=`を改めてDNSレコードに設定してください。  
+詳細は[How to Use Domain Lockdown™](https://support.mailchannels.com/hc/en-us/articles/16918954360845#h_01HAD21C0BVYNDQQY6BM6FX36V)を参照してください。
 
 ## Email Routingの設定
 Cloudflareの[公式ドキュメント](https://developers.cloudflare.com/email-routing/email-workers/enable-email-workers/)に従ってEmail Routingを有効化し、Catch-all addressのActionを`Send to a Worker`に、Worker名に`workers-mail`を設定します。  
