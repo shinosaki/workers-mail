@@ -56,6 +56,9 @@ Workerの環境変数です。
 $ git clone https://github.com/shinosaki/workers-mail.git
 $ cd workers-mail
 
+// If you not login wrangler
+$ wrangler login
+
 $ npm run dkim
 $ npm run secret:dkim
 
@@ -64,7 +67,8 @@ $ npm run db:init
 // Append KV/D1's id in wrangler.toml
 $ vi ./wrangler.toml
 
-$ npm run db:migration
+$ npm run db:generate
+$ npm run deploy:migration
 $ npm run deploy
 ```
 
